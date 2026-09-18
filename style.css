@@ -72,3 +72,18 @@ body {
 .content p {
     line-height: 1.6;
 }
+
+/* お問い合わせボタンのデザイン */
+.btn-contact {
+    display: inline-block;
+    background-color: #0066cc;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+.btn-contact:hover {
+    background-color: #005bb5;
+}
