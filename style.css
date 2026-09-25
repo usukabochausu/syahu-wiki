@@ -102,3 +102,45 @@ body {
 .btn-contact:hover {
     background-color: #005bb5;
 }
+
+/* =====================================
+   スマホ表示用の切り替え（画面幅768px以下）
+===================================== */
+@media screen and (max-width: 768px) {
+    /* 左右の並びを縦並び（上下）に切り替える */
+    .container {
+        flex-direction: column;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        min-height: auto;
+    }
+
+    /* サイドバーを画面の上部に横幅いっぱいで配置 */
+    .sidebar {
+        width: auto;
+        border-right: none;
+        border-bottom: 1px solid #eaecef;
+        padding: 20px;
+    }
+
+    /* アイコンを少し小さくして収まりを良くする */
+    .sidebar-icon img {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* 本文エリアの余白をスマホ向けに詰める */
+    .content {
+        padding: 24px 16px;
+    }
+
+    /* 見出しの文字サイズをスマホに合わせて調整 */
+    .content h1 {
+        font-size: 1.6rem;
+    }
+
+    .content h2 {
+        font-size: 1.2rem;
+    }
+}
