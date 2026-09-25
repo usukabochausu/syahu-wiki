@@ -144,3 +144,87 @@ body {
         font-size: 1.2rem;
     }
 }
+/* =====================================
+   スマホ表示用の切り替え（画面幅768px以下）
+===================================== */
+@media screen and (max-width: 768px) {
+    /* 左右の並びを縦並び（上下）に切り替える */
+    .container {
+        flex-direction: column;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        min-height: auto;
+    }
+
+    /* ▼▼▼ ここから下が新しく書き換えた「追従ヘッダー」の設定 ▼▼▼ */
+    
+    /* サイドバーを画面上部に固定（常駐）する */
+    .sidebar {
+        position: sticky;
+        top: 0; /* 画面の一番上で固定 */
+        z-index: 1000; /* スクロールした時に本文の裏に隠れないように手前に出す */
+        background-color: rgba(255, 255, 255, 0.95); /* 背景を白（ほんの少し半透明で今風に） */
+        backdrop-filter: blur(5px); /* 背景をすりガラスのようにぼかす */
+        padding: 10px 15px;
+        display: flex; /* アイコンと≡ボタンを横並びにする */
+        align-items: center;
+        justify-content: space-between; /* 左右の端に離して配置 */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* 軽い影をつけて浮かす */
+        border-right: none;
+        border-bottom: 1px solid #eaecef;
+    }
+
+    /* アイコンを小さくしてヘッダーに収める */
+    .sidebar-icon {
+        margin-bottom: 0;
+    }
+    .sidebar-icon img {
+        width: 45px;
+        height: 45px;
+        border-width: 2px;
+    }
+
+    /* ≡ボタン（メニュー開閉）の調整 */
+    .sp-menu {
+        margin: 0;
+    }
+    .sp-menu summary {
+        margin-bottom: 0;
+        padding: 8px 15px;
+    }
+
+    /* タップして開いたメニュー一覧のデザイン */
+    .sp-menu ul {
+        position: absolute; /* メニューをヘッダーから切り離して浮き出させる */
+        top: 100%; /* ヘッダーの真下に出現させる */
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        padding: 15px 20px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        box-sizing: border-box; /* 画面幅からはみ出ないようにする */
+        border-top: 1px solid #eee;
+    }
+
+    /* スマホメニューの項目同士の隙間を広げて押しやすくする */
+    .sp-menu li {
+        margin-bottom: 12px;
+    }
+    
+    /* ▲▲▲ 追従ヘッダーの設定ここまで ▲▲▲ */
+
+    /* 本文エリアの余白をスマホ向けに詰める */
+    .content {
+        padding: 24px 16px;
+    }
+
+    /* 見出しの文字サイズをスマホに合わせて調整 */
+    .content h1 {
+        font-size: 1.6rem;
+    }
+
+    .content h2 {
+        font-size: 1.2rem;
+    }
+}
