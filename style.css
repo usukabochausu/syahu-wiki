@@ -228,3 +228,73 @@ body {
         font-size: 1.2rem;
     }
 }
+
+/* =====================================
+   パラメータ説明ボックスのデザイン
+===================================== */
+.info-box {
+    background-color: #f8fbff; /* 薄い青色の背景 */
+    border: 2px solid #cce0ff; /* 青枠 */
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 50px; /* 下のグラフとの間に余白を作る */
+}
+
+.info-box h3 {
+    margin-top: 0;
+    color: #004080;
+    border-bottom: 2px dashed #0066cc;
+    padding-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.info-box h4 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    color: #333;
+    border-left: 4px solid #0066cc;
+    padding-left: 10px;
+    font-size: 1.1rem;
+}
+
+.info-box ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.info-box li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* 用語説明（dl, dt, dd）を見やすいレイアウトにする */
+.info-box dl {
+    display: flex;
+    flex-wrap: wrap; /* 画面が狭いときは折り返す */
+    margin: 0;
+}
+
+.info-box dt {
+    width: 110px; /* 用語（社不性など）の幅 */
+    font-weight: bold;
+    color: #0066cc;
+    margin-bottom: 15px;
+}
+
+.info-box dd {
+    width: calc(100% - 110px); /* 残りの幅を説明文にする */
+    margin: 0 0 15px 0;
+    line-height: 1.5;
+}
+
+/* スマホ表示の時は、用語と説明を縦に並べる */
+@media screen and (max-width: 768px) {
+    .info-box dt {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .info-box dd {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

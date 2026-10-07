@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パラメータ - My Wiki</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- ▼ Chart.jsをインターネット経由で読み込む魔法の1行 ▼ -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 左側のメニュー（サイドバー） -->
+        <aside class="sidebar">
+            <div class="sidebar-icon">
+                <img src="icon.jpg" alt="プロフィールアイコン">
+            </div>
+            <details class="sp-menu">
+                <summary>メニューを開く ≡</summary>
+                <ul>
+                    <li><a href="index.html">トップページ</a></li>
+                    <li><a href="member.html">メンバー</a></li>
+                    <li><a href="rekisi.html">歴史</a></li>
+                    <li><a href="todo.html">todo</a></li>
+                    <li><a href="parameter.html">パラメータ</a></li>
+                </ul>
+            </details>
+        </aside>
+
+        <!-- 右側の本文（メインコンテンツ） -->
+        <!-- 右側の本文（メインコンテンツ） -->
+        <main class="content">
+            <h1>メンバーの能力値</h1>
+            <p>各メンバーのパラメータを表したレーダーチャートです。</p>
+            
+            <!-- ▼ ここから追加：パラメータの説明ボックス ▼ -->
+            <div class="info-box">
+                <h3>パラメータの見方と共通認識</h3>
+                <ul>
+                    各能力値名の通り、六角形の面積が大きい（総合値が高い）からといって、優れているというわけではない。
+                    本パラメータは、「厳正なる審査」の結果に基づいて算出されている。
+                </ul>
+                
+                <h4>各ステータスの意味</h4>
+                <dl>
+                    <dt>【社不性】</dt>
+                    <dd>社会のルールや常識からの逸脱度。ランクが高いほど社会適合が絶望的であることを示す。</dd>
+                    
+                    <dt>【知性】</dt>
+                    <dd>IQ、学力、論理的思考力、あるいは悪知恵。サボテンレベルからインテリまで様々。</dd>
+                    
+                    <dt>【協調性】</dt>
+                    <dd>空気を読み、他者と円滑にコミュニケーションをとり、集団行動の適性があるかどうか。</dd>
+                    
+                    <dt>【煩悩性】</dt>
+                    <dd>一般的には、食欲・睡眠欲・物欲など、人間の根源的な欲求の強さを表す言葉だが、このサイトにおいては性欲を示す。<br>
+                        A以上は将来豚箱にぶち込まれても驚きはしない</dd>
+
+                    
+                    <dt>【生存性】</dt>
+                    <dd>フィジカルおよびメンタルの強度。簡単に言えば、無人島でも生きていけそうかどうか</dd>
+                    
+                    <dt>【残虐性】</dt>
+                    <dd>容赦のなさ、冷酷さ。一部は性格に変化が現れるものがおり、数値の高い方を採用している。</dd>
+                </dl>
+            </div>
+            <!-- ▲ ここまで追加 ▲ -->
+            <!-- ▼ HTML側：全員分のグラフを表示する箱を用意 ▼ -->
+            <h2>ザッシュ（雑種）</h2>
+            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="chartZasshu"></canvas></div>
+
+            <h2>おじさん</h2>
+            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="chartOjisan"></canvas></div>
+
+            <h2>ディーチ</h2>
+            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="chartDeichi"></canvas></div>
+
+            <h2>たつ</h2>
+            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="charttatsu"></canvas></div>
+
+            <h2>ざわ</h2>
+            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="chartzawa"></canvas></div>
+
+            <h2>るか</h2>
+            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="chartruka"></canvas></div>
+
+            <h2>ｵｶﾓﾄ</h2>
+            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="chartokamoto"></canvas></div>
+
+            <h2>かちー</h2>
+            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="chartkachii"></canvas></div>
+
+            <h2>はやお</h2>
+            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="charthayao"></canvas></div>
+
+            <!-- ▼ グラフを描画するプログラミング ▼ -->
+            <script>
+                // 共通設定（数値をS〜Dランクに変換して表示）
+                const commonOptions = {
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 100,
+                            ticks: { 
+                                stepSize: 20,
+                                // ▼ ここがポイント！目盛りの数値を文字に変換します
+                                callback: function(value) {
+                                    if (value === 100) return 'S';
+                                    if (value === 80) return 'A';
+                                    if (value === 60) return 'B';
+                                    if (value === 40) return 'C';
+                                    if (value === 20) return 'D';
+                                    return ''; // 0の場所（中心）は何も表示しない
+                                },
+                                font: {
+                                    size: 14,       // ランクの文字を少し大きく
+                                    weight: 'bold'  // 太字にしてカッコよく目立たせる
+                                }
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 14 // 周りのパラメータ名（社不性など）の文字サイズ
+                                }
+                            }
+                        }
+                    }
+                };
+
+                // ★ご希望の新しいパラメータ名に変更
+                const paramLabels = ['社不性', '知性', '協調性', '煩悩性', 'キモさ', '残虐性'];
+
+                // 1. ザッシュ（青）
+                new Chart(document.getElementById('chartZasshu'), {
+                    type: 'radar',
+                    data: { labels: paramLabels, datasets: [{
+                        label: 'ザッシュ', data: [90, 60, 20, 60, 40, 40],
+                        backgroundColor: 'rgba(0, 102, 204, 0.2)', borderColor: 'rgba(0, 102, 204, 1)', borderWidth: 2
+                    }]}, options: commonOptions
+                });
+
+                // 2. おじさん（赤）
+                new Chart(document.getElementById('chartOjisan'), {
+                    type: 'radar',
+                    data: { labels: paramLabels, datasets: [{
+                        label: 'おじさん', data: [100, 10, 60, 80, 70, 100],
+                        backgroundColor: 'rgba(55, 200, 40, 0.2)', borderColor: 'rgba(255, 99, 132, 1)', borderWidth: 2
+                    }]}, options: commonOptions
+                });
+
+                // 3. ディーチ（緑）
+                new Chart(document.getElementById('chartDeichi'), {
+                    type: 'radar',
+                    data: { labels: paramLabels, datasets: [{
+                        label: 'ディーチ', data: [100, 10, 40, 80, 30, 100],
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)', borderColor: 'rgba(75, 192, 192, 1)', borderWidth: 2
+                    }]}, options: commonOptions
+                });
+
+                // 4. たつ（紫）
+                new Chart(document.getElementById('charttatsu'), {
+                    type: 'radar',
+                    data: { labels: paramLabels, datasets: [{
+                        label: 'たつ', data: [50, 50, 60, 50, 140, 100],
+                        backgroundColor: 'rgba(153, 102, 255, 0.2)', borderColor: 'rgba(153, 102, 255, 1)', borderWidth: 2
+                    }]}, options: commonOptions
+                });
+
+                // 5. ざわ（オレンジ）
+                new Chart(document.getElementById('chartzawa'), {
+                    type: 'radar',
+                    data: { labels: paramLabels, datasets: [{
+                        label: 'ざわ', data: [30, 80, 50, 100, 40, 40],
+                        backgroundColor: 'rgba(255, 159, 64, 0.2)', borderColor: 'rgba(255, 159, 64, 1)', borderWidth: 2
+                    }]}, options: commonOptions
+                });
+
+                // 6. るか（水色）
+                new Chart(document.getElementById('chartruka'), {
+                    type: 'radar',
+                    data: { labels: paramLabels, datasets: [{
+                        label: 'るか', data: [90, 60, 50, 70, 30, 60],
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)', borderColor: 'rgba(54, 162, 235, 1)', borderWidth: 2
+                    }]}, options: commonOptions
+                });
+
+                // 7. ｵｶﾓﾄ（黄色）
+                new Chart(document.getElementById('chartokamoto'), {
+                    type: 'radar',
+                    data: { labels: paramLabels, datasets: [{
+                        label: 'ｵｶﾓﾄ', data: [80, 80, 20, 100, 90, 90],
+                        backgroundColor: 'rgba(255, 206, 86, 0.2)', borderColor: 'rgba(139, 69, 19, 1)', borderWidth: 2
+                    }]}, options: commonOptions
+                });
+
+                // 8. かちー（ピンク）
+                new Chart(document.getElementById('chartkachii'), {
+                    type: 'radar',
+                    data: { labels: paramLabels, datasets: [{
+                        label: 'かちー', data: [100, 10, 90, 90, 70, 70],
+                        backgroundColor: 'rgba(255, 105, 180, 0.2)', borderColor: 'rgba(255, 105, 180, 1)', borderWidth: 2
+                    }]}, options: commonOptions
+                });
+
+                // 9. はやお（赤）
+                new Chart(document.getElementById('charthayao'), {
+                    type: 'radar',
+                    data: { labels: paramLabels, datasets: [{
+                        label: 'はやお', data: [20, 100, 100, 40, 10, 10],
+                        backgroundColor: 'rgba(139, 69, 19, 0.2)', borderColor: 'rgba(255, 99, 132, 1)', borderWidth: 2
+                    }]}, options: commonOptions
+                });
+            </script>
+        </main>
+    </div>
+</body>
+</html>
+<!--<h2 id="ojisan">おじさん</h2>
+        <h2 id="diichi">ディーチ</h2>
+        <h2 id="tatsu">たつ</h2>
+        <h2 id="zawa">ざわ</h2>
+        <h2 id="ruka">るか</h2>
+        <h2 id="okamoto">ｵｶﾓﾄ</h2>
+        <h2 id="kachii">かちー</h2>
+        <h2 id="chibetto">チベット</h2> 
+        '社不性', '知性', '協調性', '煩悩性', '生存性', '残虐性'
