@@ -15,7 +15,7 @@
       <aside class="sidebar">
         <div class="sidebar-icon">
           <!-- ▼ 注意：拡張子が.jpgか.jpegか、実際の画像ファイル名に統一してください ▼ -->
-          <img src="icon.jpg" alt="プロフィールアイコン">
+          <img src="icon.jpeg" alt="プロフィールアイコン">
         </div>
         <details class="sp-menu">
           <summary>メニューを開く ≡</summary>
@@ -31,12 +31,11 @@
       </aside>
 
         <!-- 右側の本文（メインコンテンツ） -->
-        <!-- 右側の本文（メインコンテンツ） -->
         <main class="content">
             <h1>メンバーの能力値</h1>
             <p>各メンバーのパラメータを表したレーダーチャートです。</p>
             
-            <!-- ▼ ここから追加：パラメータの説明ボックス ▼ -->
+            <!-- ▼ パラメータの説明ボックス ▼ -->
             <div class="info-box">
                 <h3>パラメータの見方と共通認識</h3>
                 <ul>
@@ -59,44 +58,72 @@
                     <dd>一般的には、食欲・睡眠欲・物欲など、人間の根源的な欲求の強さを表す言葉だが、このサイトにおいては性欲を示す。<br>
                         A以上は将来豚箱にぶち込まれても驚きはしない</dd>
 
-                    
-                    <dt>【生存性】</dt>
-                    <dd>フィジカルおよびメンタルの強度。簡単に言えば、無人島でも生きていけそうかどうか</dd>
+                    <dt>【キモさ】</dt>
+                    <dd>性欲、気持ち悪さ、おぞましさの総合評価である。いかにある通り、たつに関しては我々の物差しでは測れない域であるため、カンストさせている</dd>
                     
                     <dt>【残虐性】</dt>
                     <dd>容赦のなさ、冷酷さ。一部は性格に変化が現れるものがおり、数値の高い方を採用している。</dd>
                 </dl>
             </div>
-            <!-- ▲ ここまで追加 ▲ -->
-            <!-- ▼ HTML側：全員分のグラフを表示する箱を用意 ▼ -->
-            <h2>ザッシュ（雑種）</h2>
-            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="chartZasshu"></canvas></div>
 
-            <h2>おじさん</h2>
-            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="chartOjisan"></canvas></div>
+            <!-- ▼ アイデアB：カード型で2〜3列に並べるグリッド ▼ -->
+            <div class="param-grid">
+                <div class="param-card" id="param-zasshu">
+                    <h2>ザッシュ（雑種）</h2>
+                    <div class="chart-box"><canvas id="chartZasshu"></canvas></div>
+                    <a href="member.html#zasshu" class="btn-link">📖 紹介文を読む</a>
+                </div>
 
-            <h2>ディーチ</h2>
-            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="chartDeichi"></canvas></div>
+                <div class="param-card" id="param-ojisan">
+                    <h2>おじさん</h2>
+                    <div class="chart-box"><canvas id="chartOjisan"></canvas></div>
+                    <a href="member.html#ojisan" class="btn-link">📖 紹介文を読む</a>
+                </div>
 
-            <h2>たつ</h2>
-            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="charttatsu"></canvas></div>
+                <div class="param-card" id="param-deichi">
+                    <h2>ディーチ</h2>
+                    <div class="chart-box"><canvas id="chartDeichi"></canvas></div>
+                    <a href="member.html#diichi" class="btn-link">📖 紹介文を読む</a>
+                </div>
 
-            <h2>ざわ</h2>
-            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="chartzawa"></canvas></div>
+                <div class="param-card" id="param-tatsu">
+                    <h2>たつ</h2>
+                    <div class="chart-box"><canvas id="charttatsu"></canvas></div>
+                    <a href="member.html#tatsu" class="btn-link">📖 紹介文を読む</a>
+                </div>
 
-            <h2>るか</h2>
-            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="chartruka"></canvas></div>
+                <div class="param-card" id="param-zawa">
+                    <h2>ざわ</h2>
+                    <div class="chart-box"><canvas id="chartzawa"></canvas></div>
+                    <a href="member.html#zawa" class="btn-link">📖 紹介文を読む</a>
+                </div>
 
-            <h2>ｵｶﾓﾄ</h2>
-            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="chartokamoto"></canvas></div>
+                <div class="param-card" id="param-ruka">
+                    <h2>るか</h2>
+                    <div class="chart-box"><canvas id="chartruka"></canvas></div>
+                    <a href="member.html#ruka" class="btn-link">📖 紹介文を読む</a>
+                </div>
 
-            <h2>かちー</h2>
-            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="chartkachii"></canvas></div>
+                <div class="param-card" id="param-okamoto">
+                    <h2>ｵｶﾓﾄ</h2>
+                    <div class="chart-box"><canvas id="chartokamoto"></canvas></div>
+                    <a href="member.html#okamoto" class="btn-link">📖 紹介文を読む</a>
+                </div>
 
-            <h2>はやお</h2>
-            <div style="max-width: 400px; margin: 20px auto 60px;"><canvas id="charthayao"></canvas></div>
+                <div class="param-card" id="param-kachii">
+                    <h2>かちー</h2>
+                    <div class="chart-box"><canvas id="chartkachii"></canvas></div>
+                    <a href="member.html#kachii" class="btn-link">📖 紹介文を読む</a>
+                </div>
 
-            <!-- ▼ グラフを描画するプログラミング ▼ -->
+                <div class="param-card" id="param-hayao">
+                    <h2>はやお</h2>
+                    <div class="chart-box"><canvas id="charthayao"></canvas></div>
+                    <a href="member.html#chibetto" class="btn-link">📖 紹介文を読む</a>
+                </div>
+            </div>
+
+            <!-- ▼ グラフを描画するプログラミング（数値や設定はそのまま維持） ▼ -->
             <script>
                 // 共通設定（数値をS〜Dランクに変換して表示）
                 const commonOptions = {
@@ -106,37 +133,35 @@
                             max: 100,
                             ticks: { 
                                 stepSize: 20,
-                                // ▼ ここがポイント！目盛りの数値を文字に変換します
                                 callback: function(value) {
                                     if (value === 100) return 'S';
                                     if (value === 80) return 'A';
                                     if (value === 60) return 'B';
                                     if (value === 40) return 'C';
                                     if (value === 20) return 'D';
-                                    return ''; // 0の場所（中心）は何も表示しない
+                                    return '';
                                 },
                                 font: {
-                                    size: 14,       // ランクの文字を少し大きく
-                                    weight: 'bold'  // 太字にしてカッコよく目立たせる
+                                    size: 14,
+                                    weight: 'bold'
                                 }
                             },
                             pointLabels: {
                                 font: {
-                                    size: 14 // 周りのパラメータ名（社不性など）の文字サイズ
+                                    size: 14
                                 }
                             }
                         }
                     }
                 };
 
-                // ★ご希望の新しいパラメータ名に変更
                 const paramLabels = ['社不性', '知性', '協調性', '煩悩性', 'キモさ', '残虐性'];
 
                 // 1. ザッシュ（青）
                 new Chart(document.getElementById('chartZasshu'), {
                     type: 'radar',
                     data: { labels: paramLabels, datasets: [{
-                        label: 'ザッシュ', data: [90, 60, 20, 60, 40, 40],
+                        label: 'ザッシュ', data: [100, 60, 20, 60, 40, 40],
                         backgroundColor: 'rgba(0, 102, 204, 0.2)', borderColor: 'rgba(0, 102, 204, 1)', borderWidth: 2
                     }]}, options: commonOptions
                 });
@@ -181,7 +206,7 @@
                 new Chart(document.getElementById('chartruka'), {
                     type: 'radar',
                     data: { labels: paramLabels, datasets: [{
-                        label: 'るか', data: [90, 60, 50, 70, 30, 60],
+                        label: 'るか', data: [100, 60, 40, 70, 30, 60],
                         backgroundColor: 'rgba(54, 162, 235, 0.2)', borderColor: 'rgba(54, 162, 235, 1)', borderWidth: 2
                     }]}, options: commonOptions
                 });
@@ -190,7 +215,7 @@
                 new Chart(document.getElementById('chartokamoto'), {
                     type: 'radar',
                     data: { labels: paramLabels, datasets: [{
-                        label: 'ｵｶﾓﾄ', data: [80, 80, 20, 100, 90, 90],
+                        label: 'ｵｶﾓﾄ', data: [80, 70, 30, 100, 90, 90],
                         backgroundColor: 'rgba(255, 206, 86, 0.2)', borderColor: 'rgba(139, 69, 19, 1)', borderWidth: 2
                     }]}, options: commonOptions
                 });
@@ -217,12 +242,3 @@
     </div>
 </body>
 </html>
-<!--<h2 id="ojisan">おじさん</h2>
-        <h2 id="diichi">ディーチ</h2>
-        <h2 id="tatsu">たつ</h2>
-        <h2 id="zawa">ざわ</h2>
-        <h2 id="ruka">るか</h2>
-        <h2 id="okamoto">ｵｶﾓﾄ</h2>
-        <h2 id="kachii">かちー</h2>
-        <h2 id="chibetto">チベット</h2> 
-        '社不性', '知性', '協調性', '煩悩性', '生存性', '残虐性'

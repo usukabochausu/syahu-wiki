@@ -32,12 +32,13 @@ body {
 }
 
 .sidebar-icon img {
-    width: 120px; /* アイコンの幅（お好みで変更してください） */
+    width: 120px; /* アイコンの幅 */
     height: 120px; /* アイコンの高さ */
     border-radius: 50%; /* 50%にすることで完全な丸型に切り抜く */
     object-fit: cover; /* 画像が歪まずに枠に収まるようにする */
     border: 4px solid #ffffff; /* アイコンの周りに白いフチをつける */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* フワッと浮いているような影をつける */
+    flex-shrink: 0; /* 画面が狭くても楕円に潰れないようにする */
 }
 
 .sidebar h2 {
@@ -62,6 +63,29 @@ body {
 
 .sidebar a:hover {
     text-decoration: underline;
+}
+
+/* 折りたたみメニュー（details/summary）のデザイン */
+.sp-menu summary {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #0066cc;
+    background-color: #e6f0fa;
+    padding: 10px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    list-style: none;
+    text-align: center;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+.sp-menu summary:hover {
+    background-color: #d0e4f7;
+}
+
+.sp-menu summary::-webkit-details-marker {
+    display: none;
 }
 
 /* 右側のメインコンテンツ */
@@ -104,140 +128,14 @@ body {
 }
 
 /* =====================================
-   スマホ表示用の切り替え（画面幅768px以下）
-===================================== */
-@media screen and (max-width: 768px) {
-    /* 左右の並びを縦並び（上下）に切り替える */
-    .container {
-        flex-direction: column;
-        margin: 0;
-        border-radius: 0;
-        box-shadow: none;
-        min-height: auto;
-    }
-
-    /* サイドバーを画面の上部に横幅いっぱいで配置 */
-    .sidebar {
-        width: auto;
-        border-right: none;
-        border-bottom: 1px solid #eaecef;
-        padding: 20px;
-    }
-
-    /* アイコンを少し小さくして収まりを良くする */
-    .sidebar-icon img {
-        width: 80px;
-        height: 80px;
-    }
-
-    /* 本文エリアの余白をスマホ向けに詰める */
-    .content {
-        padding: 24px 16px;
-    }
-
-    /* 見出しの文字サイズをスマホに合わせて調整 */
-    .content h1 {
-        font-size: 1.6rem;
-    }
-
-    .content h2 {
-        font-size: 1.2rem;
-    }
-}
-/* =====================================
-   スマホ表示用の切り替え（画面幅768px以下）
-===================================== */
-@media screen and (max-width: 768px) {
-    /* 左右の並びを縦並び（上下）に切り替える */
-    .container {
-        flex-direction: column;
-        margin: 0;
-        border-radius: 0;
-        box-shadow: none;
-        min-height: auto;
-    }
-
-    /* ▼▼▼ ここから下が新しく書き換えた「追従ヘッダー」の設定 ▼▼▼ */
-    
-    /* サイドバーを画面上部に固定（常駐）する */
-    .sidebar {
-        position: sticky;
-        top: 0; /* 画面の一番上で固定 */
-        z-index: 1000; /* スクロールした時に本文の裏に隠れないように手前に出す */
-        background-color: rgba(255, 255, 255, 0.95); /* 背景を白（ほんの少し半透明で今風に） */
-        backdrop-filter: blur(5px); /* 背景をすりガラスのようにぼかす */
-        padding: 10px 15px;
-        display: flex; /* アイコンと≡ボタンを横並びにする */
-        align-items: center;
-        justify-content: space-between; /* 左右の端に離して配置 */
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* 軽い影をつけて浮かす */
-        border-right: none;
-        border-bottom: 1px solid #eaecef;
-    }
-
-    /* アイコンを小さくしてヘッダーに収める */
-    .sidebar-icon {
-        margin-bottom: 0;
-    }
-    .sidebar-icon img {
-        width: 45px;
-        height: 45px;
-        border-width: 2px;
-    }
-
-    /* ≡ボタン（メニュー開閉）の調整 */
-    .sp-menu {
-        margin: 0;
-    }
-    .sp-menu summary {
-        margin-bottom: 0;
-        padding: 8px 15px;
-    }
-
-    /* タップして開いたメニュー一覧のデザイン */
-    .sp-menu ul {
-        position: absolute; /* メニューをヘッダーから切り離して浮き出させる */
-        top: 100%; /* ヘッダーの真下に出現させる */
-        left: 0;
-        width: 100%;
-        background-color: #fff;
-        padding: 15px 20px;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-        box-sizing: border-box; /* 画面幅からはみ出ないようにする */
-        border-top: 1px solid #eee;
-    }
-
-    /* スマホメニューの項目同士の隙間を広げて押しやすくする */
-    .sp-menu li {
-        margin-bottom: 12px;
-    }
-    
-    /* ▲▲▲ 追従ヘッダーの設定ここまで ▲▲▲ */
-
-    /* 本文エリアの余白をスマホ向けに詰める */
-    .content {
-        padding: 24px 16px;
-    }
-
-    /* 見出しの文字サイズをスマホに合わせて調整 */
-    .content h1 {
-        font-size: 1.6rem;
-    }
-
-    .content h2 {
-        font-size: 1.2rem;
-    }
-}
-
-/* =====================================
    パラメータ説明ボックスのデザイン
 ===================================== */
 .info-box {
-    background-color: #f8fbff; /* 薄い青色の背景 */
-    border: 2px solid #cce0ff; /* 青枠 */
+    background-color: #f8fbff;
+    border: 2px solid #cce0ff;
     border-radius: 8px;
     padding: 25px;
-    margin-bottom: 50px; /* 下のグラフとの間に余白を作る */
+    margin-bottom: 50px;
 }
 
 .info-box h3 {
@@ -267,28 +165,203 @@ body {
     line-height: 1.6;
 }
 
-/* 用語説明（dl, dt, dd）を見やすいレイアウトにする */
 .info-box dl {
     display: flex;
-    flex-wrap: wrap; /* 画面が狭いときは折り返す */
+    flex-wrap: wrap;
     margin: 0;
 }
 
 .info-box dt {
-    width: 110px; /* 用語（社不性など）の幅 */
+    width: 110px;
     font-weight: bold;
     color: #0066cc;
     margin-bottom: 15px;
 }
 
 .info-box dd {
-    width: calc(100% - 110px); /* 残りの幅を説明文にする */
+    width: calc(100% - 110px);
     margin: 0 0 15px 0;
     line-height: 1.5;
 }
 
-/* スマホ表示の時は、用語と説明を縦に並べる */
+/* =====================================
+   アイデアB：相互リンクボタン ＆ パラメータ2〜3列グリッド
+===================================== */
+.btn-link {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: #0066cc;
+    background-color: #f0f7ff;
+    border: 1px solid #cce0ff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    margin-top: 5px;
+    transition: all 0.2s;
+}
+
+.btn-link:hover {
+    background-color: #0066cc;
+    color: #fff;
+}
+
+.param-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.param-card {
+    background: #fff;
+    border: 1px solid #eaecef;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    text-align: center;
+}
+
+.param-card h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #f0f4f8;
+    padding-bottom: 10px;
+}
+
+.chart-box {
+    max-width: 350px;
+    margin: 15px auto;
+}
+
+/* =====================================
+   アイデアA：歴史ページのタイムライン（年表）
+===================================== */
+.timeline {
+    position: relative;
+    margin: 40px 0 40px 20px;
+    padding-left: 30px;
+    border-left: 4px solid #0066cc;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+/* 年表の丸いポチ */
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -38px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border: 4px solid #0066cc;
+    border-radius: 50%;
+}
+
+.timeline-date {
+    font-weight: bold;
+    color: #0066cc;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+}
+
+.timeline-content {
+    background-color: #f8fbff;
+    border: 1px solid #e1ecf7;
+    border-radius: 8px;
+    padding: 15px 20px;
+}
+
+.timeline-content h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1.15rem;
+    color: #222;
+}
+
+.timeline-content p {
+    margin: 0;
+}
+
+/* =====================================
+   スマホ表示用の切り替え（画面幅768px以下・統合版）
+===================================== */
 @media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        min-height: auto;
+    }
+
+    /* 追従ヘッダーの設定 */
+    .sidebar {
+        width: auto;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        border-right: none;
+        border-bottom: 1px solid #eaecef;
+    }
+
+    .sidebar-icon {
+        margin-bottom: 0;
+    }
+    .sidebar-icon img {
+        width: 45px;
+        height: 45px;
+        border-width: 2px;
+    }
+
+    .sp-menu {
+        margin: 0;
+    }
+    .sp-menu summary {
+        margin-bottom: 0;
+        padding: 8px 15px;
+        font-size: 1rem;
+    }
+
+    .sp-menu ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        padding: 15px 20px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        box-sizing: border-box;
+        border-top: 1px solid #eee;
+    }
+
+    .sp-menu li {
+        margin-bottom: 12px;
+    }
+
+    .content {
+        padding: 24px 16px;
+    }
+
+    .content h1 {
+        font-size: 1.6rem;
+    }
+
+    .content h2 {
+        font-size: 1.2rem;
+    }
+
+    /* 説明ボックスのスマホ対応 */
     .info-box dt {
         width: 100%;
         margin-bottom: 5px;
@@ -296,5 +369,19 @@ body {
     .info-box dd {
         width: 100%;
         margin-bottom: 20px;
+    }
+
+    /* パラメータグリッドをスマホでは1列にする */
+    .param-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* タイムラインの余白をスマホ向けに調整 */
+    .timeline {
+        margin-left: 10px;
+        padding-left: 20px;
+    }
+    .timeline-item::before {
+        left: -28px;
     }
 }
