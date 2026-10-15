@@ -11,17 +11,15 @@
       <!-- 左側のメニュー（サイドバー） -->
       <aside class="sidebar">
         <div class="sidebar-icon">
-          <!-- ▼ 注意：拡張子が.jpgか.jpegか、実際の画像ファイル名に統一してください ▼ -->
           <img src="icon.jpeg" alt="プロフィールアイコン">
         </div>
-        <details class="sp-menu">
+        <details class="sp-menu" open>
           <summary>メニューを開く ≡</summary>
           <ul>
             <li><a href="index.html">トップページ</a></li>
             <li><a href="member.html">メンバー</a></li>
             <li><a href="rekisi.html">歴史</a></li>
             <li><a href="todo.html">todo</a></li>
-            <!-- ▼ これが全ページに必要です ▼ -->
             <li><a href="parameter.html">パラメータ</a></li>
           </ul>
         </details>
@@ -36,8 +34,14 @@
           
         </p>
         
-        <a href="#" class="btn-contact">お問い合わせ</a>
+        <a href="contact.html" class="btn-contact">お問い合わせ</a>
       </main>
     </div>
+
+    <script>
+      if (window.innerWidth <= 768) {
+        document.querySelector('.sp-menu').removeAttribute('open');
+      }
+    </script>
   </body>
 </html>

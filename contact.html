@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>タレコミ・お問い合わせ - My Wiki</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* contact.html専用のRPG風フォーム装飾 */
+      .form-notice {
+        background-color: rgba(0, 0, 0, 0.45);
+        border: 2px dashed var(--accent-yellow);
+        padding: 20px;
+        margin-bottom: 30px;
+        line-height: 1.8;
+      }
+      .form-notice h3 {
+        color: var(--accent-yellow);
+        margin-top: 0;
+        font-size: 1.2rem;
+      }
+      .form-notice ul {
+        margin: 10px 0 0 0;
+        padding-left: 20px;
+        color: #ddd;
+      }
+      .form-notice li {
+        margin-bottom: 6px;
+      }
+      .form-frame-box {
+        background-color: #fff; /* Googleフォーム自体の背景色になじませる */
+        border: 4px solid var(--text-white);
+        border-radius: 4px;
+        padding: 10px;
+        box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.8);
+      }
+      .form-iframe {
+        width: 100%;
+        height: 750px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 左側のメニュー（サイドバー） -->
+      <aside class="sidebar">
+        <div class="sidebar-icon">
+          <img src="icon.jpeg" alt="プロフィールアイコン">
+        </div>
+        <details class="sp-menu" open>
+          <summary>メニューを開く ≡</summary>
+          <ul>
+            <li><a href="index.html">トップページ</a></li>
+            <li><a href="member.html">メンバー</a></li>
+            <li><a href="rekisi.html">歴史</a></li>
+            <li><a href="todo.html">todo</a></li>
+            <li><a href="parameter.html">パラメータ</a></li>
+          </ul>
+        </details>
+      </aside>
+
+      <!-- 右側の本文（メインコンテンツ） -->
+      <main class="content">
+        <h1>タレコミ・お問い合わせ</h1>
+        
+        <!-- レトロRPG風の案内ウィンドウ -->
+        <div class="form-notice">
+          <h3>＊たれこみ・お問い合せの ちゅうい</h3>
+          <ul>
+            <li>メンバーの思い出や新たな黒歴史のタレコミはこちらから送信できます。</li>
+            <li><strong>【タレコミの場合】</strong>文頭に「【タレコミ：対象のメンバー名】」と記載の上、エピソードをご記入ください。</li>
+            <li>送られた内容は管理者にのみ通知され、確認後にサイトへ反映されます。</li>
+          </ul>
+        </div>
+
+        <!-- Googleフォーム埋め込み枠 -->
+        <div class="form-frame-box">
+          <iframe 
+            class="form-iframe"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfoLt_Mp6ue1XeMnVefd4ycKH17ykMhEeK7hrT5FnzXXA24LQ/viewform?embedded=true" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0">
+            読み込み中…
+          </iframe>
+        </div>
+
+        <br>
+        <a href="index.html" class="btn-contact">トップへもどる</a>
+      </main>
+    </div>
+
+    <script>
+      if (window.innerWidth <= 768) {
+        document.querySelector('.sp-menu').removeAttribute('open');
+      }
+    </script>
+  </body>
+</html>

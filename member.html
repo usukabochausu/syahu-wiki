@@ -11,17 +11,15 @@
       <!-- 左側のメニュー（サイドバー） -->
       <aside class="sidebar">
         <div class="sidebar-icon">
-          <!-- ▼ 注意：拡張子が.jpgか.jpegか、実際の画像ファイル名に統一してください ▼ -->
           <img src="icon.jpeg" alt="プロフィールアイコン">
         </div>
-        <details class="sp-menu">
+        <details class="sp-menu" open>
           <summary>メニューを開く ≡</summary>
           <ul>
             <li><a href="index.html">トップページ</a></li>
             <li><a href="member.html">メンバー</a></li>
             <li><a href="rekisi.html">歴史</a></li>
             <li><a href="todo.html">todo</a></li>
-            <!-- ▼ これが全ページに必要です ▼ -->
             <li><a href="parameter.html">パラメータ</a></li>
           </ul>
         </details>
@@ -31,23 +29,21 @@
       <main class="content">
         <h1>メンバー</h1>
         
-        <!-- ▼ ここに追加したページ内リンク（目次） ▼ -->
+        <!-- ▼ ページ内リンク（目次） ▼ -->
         <p><strong>目次：</strong></p>
-        <ul style="list-style-type: none; padding: 0; line-height: 1.8;">
-            <li><a href="#zasshu" style="color: #0066cc; text-decoration: none;">ザッシュ（雑種）</a></li>
-            <li><a href="#ojisan" style="color: #0066cc; text-decoration: none;">おじさん</a></li>
-            <li><a href="#diichi" style="color: #0066cc; text-decoration: none;">ディーチ</a></li>
-            <li><a href="#tatsu" style="color: #0066cc; text-decoration: none;">たつ</a></li>
-            <li><a href="#zawa" style="color: #0066cc; text-decoration: none;">ざわ</a></li>
-            <li><a href="#ruka" style="color: #0066cc; text-decoration: none;">るか</a></li>
-            <li><a href="#okamoto" style="color: #0066cc; text-decoration: none;">ｵｶﾓﾄ</a></li>
-            <li><a href="#kachii" style="color: #0066cc; text-decoration: none;">かちー</a></li>
-            <li><a href="#chibetto" style="color: #0066cc; text-decoration: none;">チベット</a></li>
+        <ul class="member-toc">
+            <li><a href="#zasshu">ザッシュ（雑種）</a></li>
+            <li><a href="#ojisan">おじさん</a></li>
+            <li><a href="#diichi">ディーチ</a></li>
+            <li><a href="#tatsu">たつ</a></li>
+            <li><a href="#zawa">ざわ</a></li>
+            <li><a href="#ruka">るか</a></li>
+            <li><a href="#okamoto">ｵｶﾓﾄ</a></li>
+            <li><a href="#kachii">かちー</a></li>
+            <li><a href="#chibetto">チベット</a></li>
         </ul>
-        <hr style="border: 0; border-top: 1px solid #eaecef; margin: 20px 0;">
-        <!-- ▲ ここまで ▲ -->
 
-        <!-- ▼ 各見出しに目印となる id="〇〇" を追加しました ▼ -->
+        <!-- ▼ 各見出しと本文（文章は一切変更なし） ▼ -->
         <h2 id="zasshu">ザッシュ（雑種）</h2>
         <p>
             混血のハードワーカー。残業代がすごいらしい。みんなにタバコを勧めた張本人。空腹になると不機嫌になる、フットワークが重め等、中々の気分屋である。<br>
@@ -56,9 +52,10 @@
             お酒は得意な方ではない。一番最初にタバコを吸い始めたが、肺に入れる方法を知ったのは遅かった。<br>
             幼少期は海外で過ごした。そこで見た光景は、叔父の太ももに陰茎のタトゥーが描かれていたという壮絶さである。<br>
             思い入れのあるラーメン屋が店閉まいをする前に赴くが、早く店を閉めたい店主に怪訝な顔をされる。<br>
-            自慰行為の際ティッシュを節約するため、ゴミ箱に直接撃ち込む。通称ダンクである。
+            自慰行為の際ティッシュを節約するため、ゴミ箱に直接撃ち込む。通称ダンクである。<br>
+            一時、カラオケで「広瀬香美」を歌い、喉を破壊していた。<br>
         </p>
-        <a href="parameter.html#param-zasshu" class="btn-link">📊 ザッシュの能力値を見る</a>
+        <a href="parameter.html#param-zasshu" class="btn-link"> ザッシュの能力値を見る</a>
 
         <h2 id="ojisan">おじさん</h2>
         <p>
@@ -71,7 +68,7 @@
             右左がわからないという特技を持つ。これは、社会人になってからも生かされているようだ。<br>
             女性にはラーメンを作ってほしくないという、亭主関白な一面を持つ。<br>
         </p>
-        <a href="parameter.html#param-ojisan" class="btn-link">📊 おじさんの能力値を見る</a>
+        <a href="parameter.html#param-ojisan" class="btn-link"> おじさんの能力値を見る</a>
 
         <h2 id="diichi">ディーチ</h2>
         <p>
@@ -84,7 +81,7 @@
             日本生まれ、日本育ちだが、日本語が不自由。主に、母音か単語のみで会話する。そのためか、一言で人を笑顔にする天才である。<br>
             彼の言語スキルは著しく低い。基本的には母音で会話することがほとんどである。その他、「ぬふふふ」「いーー」「かぼちゃ」等の単語を多用する。<br>
         </p>
-        <a href="parameter.html#param-deichi" class="btn-link">📊 ディーチの能力値を見る</a>
+        <a href="parameter.html#param-deichi" class="btn-link"> ディーチの能力値を見る</a>
 
         <h2 id="tatsu">たつ</h2>
         <p>
@@ -97,7 +94,7 @@
             彼の母親からは本名では呼ばれず、「たつー、大丈夫なの？」と、声をかけられる。ちなみに、彼の兄はカントン包茎である。<br>
             現在、メンバー内でピンサロに行くものが出没しており、彼もまた、素人童貞に加わろうとする一派である。<br>
         </p>
-        <a href="parameter.html#param-tatsu" class="btn-link">📊 たつの能力値を見る</a>
+        <a href="parameter.html#param-tatsu" class="btn-link"> たつの能力値を見る</a>
 
         <h2 id="zawa">ざわ</h2>
         <p>
@@ -108,7 +105,7 @@
             彼の母親は美人であり、メンバー多数から好意を寄せられている。彼の実家に訪れるとたびたびスナック〇〇が開催される。<br>
             女好きで有名だが、種違いの弟に性欲で負けそうである。<br>
         </p>
-        <a href="parameter.html#param-zawa" class="btn-link">📊 ざわの能力値を見る</a>
+        <a href="parameter.html#param-zawa" class="btn-link"> ざわの能力値を見る</a>
 
         <h2 id="ruka">るか</h2>
         <p>
@@ -122,7 +119,7 @@
             彼は幼少期に祖父からウォシュレットのボタンを聖なる水が出る装置と育てられた。
             好奇心に負けボタンを押し、水が出てしまいパニックを起こした彼はその水を飲むことで対処した。その現場を目撃した祖母を卒倒させた。<br>
         </p>
-        <a href="parameter.html#param-ruka" class="btn-link">📊 るかの能力値を見る</a>
+        <a href="parameter.html#param-ruka" class="btn-link"> るかの能力値を見る</a>
 
         <h2 id="okamoto">ｵｶﾓﾄ</h2>
         <p>
@@ -134,7 +131,7 @@
             キス魔かつバイセクシュアルであるため、メンバー内には彼に唇を奪われた者が一定数存在する。<br>
             盲腸で入院した過去があり、その現場ではメンバーに写真を撮られLINEスタンプに活用されている。<br>
         </p>
-        <a href="parameter.html#param-okamoto" class="btn-link">📊 ｵｶﾓﾄの能力値を見る</a>
+        <a href="parameter.html#param-okamoto" class="btn-link"> ｵｶﾓﾄの能力値を見る</a>
 
         <h2 id="kachii">かちー</h2>
         <p>
@@ -147,17 +144,23 @@
             「俺のチンポに狂いはねぇ」。この名言を残したのも彼である。<br>
             辛みに対して異常な強さを発揮しており、味覚を疑うレベルである。彼が将来出店した際には、辛いメニューを注文しないことをお勧めする。<br>
         </p>
-        <a href="parameter.html#param-kachii" class="btn-link">📊 かちーの能力値を見る</a>
+        <a href="parameter.html#param-kachii" class="btn-link"> かちーの能力値を見る</a>
 
         <h2 id="chibetto">チベット</h2>
         <p>
             このサイトの製作者である。顔が日本一チベットスナギツネに似ている。<del>高身長でイケメンで好青年である。</del>
         </p>
-        <a href="parameter.html#param-hayao" class="btn-link">📊 チベット（はやお）の能力値を見る</a>
+        <a href="parameter.html#param-hayao" class="btn-link"> チベット（はやお）の能力値を見る</a>
 
         <br>
-        <a href="#" class="btn-contact">お問い合わせ</a>
+        <a href="contact.html" class="btn-contact">お問い合わせ</a>
       </main>
     </div>
+
+    <script>
+      if (window.innerWidth <= 768) {
+        document.querySelector('.sp-menu').removeAttribute('open');
+      }
+    </script>
   </body>
 </html>
